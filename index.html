@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Maharani 💖</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body{
+  background: linear-gradient(#ffd6e8, #ffffff);
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+/* ===== Pages ===== */
+.page{
+  position:absolute;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  animation: fadeIn 0.9s ease;
+}
+
+.page.active{
+  display:flex;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* ===== Card ===== */
+.card{
+  background:white;
+  width:100%;
+  max-width:420px;
+  max-height:85vh;
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.15);
+  overflow-y:auto;
+  text-align:center;
+}
+
+/* ===== Buttons ===== */
+.btn{
+  margin-top:18px;
+  padding:12px 24px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d88;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.btn.secondary{
+  background:#999;
+}
+
+/* ===== Letter Reveal ===== */
+.reveal p{
+  opacity:0;
+  animation: revealText 1s ease forwards;
+}
+
+.reveal p:nth-child(1){animation-delay:.4s}
+.reveal p:nth-child(2){animation-delay:1.4s}
+.reveal p:nth-child(3){animation-delay:2.4s}
+.reveal p:nth-child(4){animation-delay:3.4s}
+
+@keyframes revealText{
+  to{opacity:1}
+}
+
+/* ===== Floating Hearts ===== */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation: floatUp 8s linear infinite;
+  opacity:0.8;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0)}
+  to{transform:translateY(-110vh)}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌸 PAGE 1 -->
+<div class="page active" id="p1">
+  <div class="card">
+    <h2>Here’s a surprise for my Maharani jii 👑💖</h2>
+    <button class="btn" onclick="startSurprise()">Click here to reveal ✨</button>
+  </div>
+</div>
+
+<!-- 💌 PAGE 2 -->
+<div class="page" id="p2">
+  <div class="card reveal">
+    <p>Dear My Love ❤️,</p>
+
+    <p>
+      As this New Year begins, I wish you happiness, peace,
+      and many beautiful moments ahead.
+      You became a very special part of my life without me even realizing it.
+    </p>
+
+    <p>
+      Your presence brings comfort, your smile brings calm,
+      and your friendship means more to me than words can explain.
+      I’m truly grateful for you.
+    </p>
+
+    <p>
+      With warmth, care, and endless good wishes ✨<br><br>
+      <b>— Your Dev 💖</b>
+    </p>
+
+    <!-- Optional image (you can change/remove) -->
+    <img src="Love.jpg"
+         style="width:100%;border-radius:14px;margin-top:15px">
+
+    <button class="btn secondary" onclick="prevPage()">⬅ Back</button>
+    <button class="btn" onclick="nextPage()">Next ➡</button>
+  </div>
+</div>
+
+<!-- 🌷 PAGE 3 -->
+<div class="page" id="p3">
+  <div class="card reveal">
+    <p>Thank you ❤️</p>
+
+    <p>
+      Thank you for the smiles, the care,
+      and for being such a beautiful part of my life.
+    </p>
+
+    <p>
+      I hope this little surprise brought a smile to your face 🌸
+    </p>
+
+    <button class="btn secondary" onclick="prevPage()">⬅ Back</button>
+    <button class="btn" onclick="playMusic()">🎶 Play Music</button>
+  </div>
+</div>
+
+<!-- 🎶 YouTube Music -->
+
+
+<script>
+let current = 1;
+
+function startSurprise(){
+  playMusic();   // music FIRST
+  nextPage();    // then page change
+}
+
+function nextPage(){
+  document.getElementById("p"+current).classList.remove("active");
+  current++;
+  document.getElementById("p"+current).classList.add("active");
+}
+
+function prevPage(){
+  document.getElementById("p"+current).classList.remove("active");
+  current--;
+  document.getElementById("p"+current).classList.add("active");
+}
+
+function playMusic(){
+  const iframe = document.createElement("iframe");
+  iframe.src = "https://www.youtube.com/embed/Wo9ZurF40aA?start=40&autoplay=1&mute=0";
+  iframe.width = "0";
+  iframe.height = "0";
+  iframe.allow = "autoplay";
+  document.body.appendChild(iframe);
+}
+</script>
+
+</body>
+</html>
